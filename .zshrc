@@ -101,3 +101,4 @@ export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"
 export PATH="/usr/local/opt/sqlite/bin:$PATH"
 export PATH="/usr/local/opt/openssl@1.1/bin:$PATH"
+alias config='/usr/bin/git --git-dir=/Users/lorenschwartz/.dotfiles/ --work-tree=/Users/lorenschwartz'

@@ -69,6 +69,9 @@ values."
       clojure-enable-clj-refactor t
       clojure-enable-linters 'clj-kondo)
      markdown
+     (neotree
+      :variables
+      neo-theme icons)
      (org
       :variables
       org-enable-github-support t
@@ -349,9 +352,6 @@ you should place your code here."
   (org-babel-load-file "~/.emacs.d/Utility-functions.org")
 
   (setq org-reveal-root "")
-
-  ;; (eval-after-load "web-mode"
-  ;; '(setq web-mode-enable-auto-expanding t))
 
   ;;Enable visual-line-mode globally
   (global-visual-line-mode t)

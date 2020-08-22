@@ -66,6 +66,9 @@ defaults write com.apple.screencapture disable-shadow -bool true
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.finder QuitMenuItem -bool true
 
+# Finder: show hidden files by default
+defaults write com.apple.finder AppleShowAllFiles -bool true
+
 # Finder: show all filename extensions
 defaults write NSGlobalDomain AppleShowAllExtensions -bool true
 
@@ -80,6 +83,9 @@ defaults write com.apple.finder _FXSortFoldersFirst -bool true
 
 # Disable the warning when changing a file extension
 defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
+
+# Avoid creating .DS_Store files on network volumes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool true
 
 # Enable snap-to-grid for icons on the desktop and in other icon views
 /usr/libexec/PlistBuddy -c "Set :DesktopViewSettings:IconViewSettings:arrangeBy grid" ~/Library/Preferences/com.apple.finder.plist
@@ -96,8 +102,17 @@ chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
 # Dock, Dashboard, and hot corners                                            #
 ###############################################################################
 
-# Set the icon size of Dock items to 36 pixels
-defaults write com.apple.dock tilesize -int 36
+# Wipe all (default) app icons from the Dock
+defaults write com.apple.dock persistent-apps -array
+
+# Show only open applications in the Dock
+defaults write com.apple.dock static-only -bool true
+
+# Set the icon size of Dock items to 24 pixels
+defaults write com.apple.dock tilesize -int 24
+
+# Set the orientation of the Dock to the right
+defaults write com.apple.dock orientiation right
 
 # Minimize windows into their application’s icon
 defaults write com.apple.dock minimize-to-application -bool true
@@ -120,8 +135,8 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 # Automatically hide and show the Dock
 defaults write com.apple.dock autohide -bool true
 
-# Make Dock icons of hidden applications translucent
-defaults write com.apple.dock showhidden -bool true
+# Do not make Dock icons of hidden applications translucent
+defaults write com.apple.dock showhidden -bool false
 
 ###############################################################################
 # Safari & WebKit                                                             #
@@ -189,6 +204,9 @@ defaults write com.apple.mail AddressesIncludeNameOnPasteboard -bool false
 
 # Add the keyboard shortcut ⌘ + Enter to send an email in Mail.app
 defaults write com.apple.mail NSUserKeyEquivalents -dict-add "Send" "@\U21a9"
+
+# Disable inline attachments (just show the icons)
+defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 
 ###############################################################################
 # Time Machine                                                                #

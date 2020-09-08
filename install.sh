@@ -33,6 +33,7 @@ brew install imagemagick
 brew cask install visual-studio-code
 brew cask install gimp
 brew cask install rawtherapee
+brew cask install iina
 
 # Install Source Code Pro font
 brew tap homebrew/cask-fonts

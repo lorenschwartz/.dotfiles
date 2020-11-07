@@ -1,0 +1,41 @@
+
+
+* All the icons
+#+BEGIN_SRC emacs-lisp
+(add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+#+END_SRC
+* Capture templates
+#+BEGIN_SRC emacs-lisp
+  (setq org-capture-templates
+    '(("t" "todo with date" entry (file+headline "~/Documents/org-files/Main.org" "Inbox")
+       "* TODO %? %^G\n SCHEDULED:%^t\n")
+      ("d" "todo with deadline" entry (file+headline "~/Documents/org-files/Main.org" "Inbox")
+       "* TODO %? %^G\n DEADLINE:%^t\n")
+      ("e" "todo no date" entry (file+headline "~/Documents/org-files/Main.org" "Inbox")
+       "* TODO %? %^G\n")
+      ("r" "Reg Update" entry (file+headline "~/Documents/org-files/Main.org" "Regulatory Updates")
+       "* OPEN %? :Reg:\n %U\n")
+    ("p" "project" entry (file+headline "~/Documents/org-files/Main.org" "Projects & Priorities")
+    "** NEW %?\n")
+    ("n" "note" entry (file+headline "~/Documents/org-files/Main.org" "Notes & Links")
+     "** %?\n %U\n")
+    ("i" "idea" entry (file+headline "~/Documents/org-files/Main.org" "Inbox")
+    "** IDEA %?\n %^G\n")
+    ("m" "minutes" entry (file+headline "~/Documents/org-files/Main.org" "Minutes")
+     "** MEETING %^{Title} %^T %^G\n %?\n")
+    ("j" "journal" entry (file+olp+datetree "~/Documents/org-files/Personal.org" "Journal")
+     "** %?")
+    ("o" "observation" entry (file+headline "~/Documents/org-files/Personal.org" "Personal Observations")
+     "** %?\n %U\n")
+    ("g" "goals" entry (file+headline "~/Documents/org-files/Personal.org" "Goals")
+     "** GOAL %?\n %^{AREA}p")
+    ("c" "contact" entry (file+headline "~/Documents/org-files/Personal.org" "Contacts")
+     "** %?\n %^{COMPANY}p %^{EMAIL}p %^{PHONE}p %^{LINKEDIN}p")
+    ("a" "agenda" entry (file+headline "~/Documents/org-files/Main.org" "Inbox")
+    "** OPEN %? %^G\n")))
+#+END_SRC
+* Org-bullets mode
+ #+BEGIN_SRC emacs-lisp
+ (require 'org-bullets)
+ (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+ #+END_SRC

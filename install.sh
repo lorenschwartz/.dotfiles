@@ -28,6 +28,9 @@ brew install fortune
 brew install cowsay
 brew install ghostscript
 brew install imagemagick
+brew tap teamookla/speedtest
+brew install speedtest --force
+brew install ispell
 
 # Install MacOS Applications
 brew cask install visual-studio-code

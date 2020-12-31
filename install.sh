@@ -38,7 +38,7 @@ brew cask install gimp
 brew cask install rawtherapee
 brew cask install iina
 
-# Install Source Code Pro font
+# Install fonts
 brew tap homebrew/cask-fonts
 brew cask install font-source-code-pro
 
@@ -48,6 +48,10 @@ brew cleanup
 # Install Spacemacs
 brew tap d12frosted/emacs-plus
 brew install emacs-plus
-brew linkapps emacs-plus
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 ln -s /usr/local/opt/emacs-plus@27/Emacs.app /Applications
+
+# Download N A N O Emacs
+git clone https://github.com/rougier/nano-emacs.git
+
+#

@@ -77,14 +77,14 @@ source $ZSH/oh-my-zsh.sh
 # export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='emacs'
+else
+  export EDITOR='emacs'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -97,6 +97,9 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias smacs="/usr/local/Cellar/emacs-plus@27/Emacs.app/Contents/MacOS/Emacs &"
+alias emacs="/usr/local/Cellar/emacs-plus@27/Emacs.app/Contents/MacOS/Emacs --with-profile myemacs &"
+alias nanomacs="/usr/local/Cellar/emacs-plus@27/Emacs.app/Contents/MacOS/Emacs --with-profile nanomacs &"
 
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"

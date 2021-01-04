@@ -86,9 +86,6 @@ else
   export EDITOR='emacs'
 fi
 
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -97,9 +94,8 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias smacs="/usr/local/Cellar/emacs-plus@27/Emacs.app/Contents/MacOS/Emacs &"
-alias emacs="/usr/local/Cellar/emacs-plus@27/Emacs.app/Contents/MacOS/Emacs --with-profile myemacs &"
-alias nanomacs="/usr/local/Cellar/emacs-plus@27/Emacs.app/Contents/MacOS/Emacs --with-profile nanomacs &"
+alias zsh="emacs ~/.zshrc"
+alias emacs="/Applications//Emacs.app &"
 
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"

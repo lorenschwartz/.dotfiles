@@ -31,16 +31,19 @@ brew install imagemagick
 brew tap teamookla/speedtest
 brew install speedtest --force
 brew install ispell
+brew install svn
 
 # Install MacOS Applications
-brew cask install visual-studio-code
-brew cask install gimp
-brew cask install rawtherapee
-brew cask install iina
+brew install --cask visual-studio-code
+brew install --cask gimp
+brew install --cask rawtherapee
+brew install --cask iina
 
 # Install fonts
 brew tap homebrew/cask-fonts
-brew cask install font-source-code-pro
+brew install --cask font-source-code-pro
+brew install --cask font-roboto-mono
+brew install --cask font-fira-code
 
 # Remove outdated versions from the cellar.
 brew cleanup
@@ -51,7 +54,12 @@ brew install emacs-plus
 git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
 ln -s /usr/local/opt/emacs-plus@27/Emacs.app /Applications
 
-# Download N A N O Emacs
+# Clone N A N O Emacs
 git clone https://github.com/rougier/nano-emacs.git
 
-#
+# Clone my dotfiles config
+git clone https://github.com/lorenschwartz/.dotfiles.git
+
+# Clone `use-package
+cd ~/.emacs.d/elpa
+git clone https://github.com/jwiegley/use-package.git

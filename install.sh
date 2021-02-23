@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
-
 TARGET="$HOME/.dotfiles"
+
+# Setup MacOS settings
+./macos.sh
 
 # Install x-code
 xcode-select --install
@@ -24,8 +26,6 @@ brew install leiningen
 
 # Intall terminal packages
 brew install tree
-brew install fortune
-brew install cowsay
 brew install ghostscript
 brew install imagemagick
 brew tap teamookla/speedtest
@@ -54,14 +54,15 @@ brew cleanup
 # Install Spacemacs
 brew tap d12frosted/emacs-plus
 brew install emacs-plus
-git clone https://github.com/syl20bnr/spacemacs ~/.emacs.d
-ln -s /usr/local/opt/emacs-plus@27/Emacs.app /Applications
-
-# Clone N A N O Emacs
-git clone https://github.com/rougier/nano-emacs.git
+git clone https://github.com/lorenschwartz/.emacs.d.git
 
 # Clone my dotfiles config
-git clone https://github.com/lorenschwartz/.dotfiles.git
+echo 'alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"' >> $HOME/.zshrc
+source ~/.zshrc
+echo ".dotfiles.git" >> .gitignore
+git clone --bare https://www.github.com/lorenschwartz/.dotfiles.git $HOME/.dotfiles.git
+dotfiles checkout
+dotfiles config --local status.showUntrackedFiles no
 
 # Clone `use-package
 cd ~/.emacs.d/elpa

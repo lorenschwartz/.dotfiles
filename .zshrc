@@ -95,7 +95,8 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias zsh="emacs ~/.zshrc"
-alias emacs="/Applications//Emacs.app &"
+alias emacs="/Applications/Emacs.app &"
+alias dotfiles='/usr/bin/git --git-dir=/Users/lorenschwartz/.dotfiles/ --work-tree=/Users/lorenschwartz'
 
 export PATH="/usr/local/opt/openjdk/bin:$PATH"
 export PATH="/usr/local/opt/gnu-getopt/bin:$PATH"

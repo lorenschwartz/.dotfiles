@@ -25,7 +25,7 @@
 (package-refresh-contents)
 
 ;; Path to nano emacs modules (mandatory)
-(add-to-list 'load-path "~/nano-emacs")
+;;(add-to-list 'load-path "~/nano-emacs")
 (add-to-list 'load-path "~/.emacs.d/lisp")
 (add-to-list 'load-path ".")
 (add-to-list 'load-path "~/.emacs.d/elpa/use-package")
@@ -33,58 +33,22 @@
 (when (not (package-installed-p 'use-package))
   (package-refresh-contents)
   (package-install 'use-package))
+(eval-when-compile (require 'use-package))
 
-;; Configure Evil
-(use-package evil
-  :ensure t
-  :init
-  :config
-  (evil-mode))
+(setq use-package-always-ensure t)
 
-;; All-the-icons
-(use-package all-the-icons
-             :ensure t)
-
-;; Use org-bullets instead of asterisks in org-mode files
-(use-package org-bullets
-  :ensure t
-  :init
-  (add-hook 'org-mode-hook 'org-bullets-mode))
-
-;; Configure rainbow-delimiter-mode
-(use-package rainbow-delimiters
+;; Pass system shell environment to Emacs.
+(use-package exec-path-from-shell
   :ensure t)
+(when (memq window-system '(mac ns x))
+  (exec-path-from-shell-initialize))
 
-;; Configure 'closure-mode
-(use-package clojure-mode
-  :ensure t
-  :mode (("\\.clj\\'" . clojure-mode)
-         ("\\.edn\\'" . clojure-mode))
-  :init
-  (add-hook 'clojure-mode-hook #'yas-minor-mode)
-  (add-hook 'clojure-mode-hook #'linum-mode)
-  (add-hook 'clojure-mode-hook #'subword-mode)
-  (add-hook 'clojure-mode-hook #'smartparen-mode)
-  (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
-  (add-hook 'clojure-mode-hook #'eldoc-mode))
+(when (daemonp)
+  (exec-path-from-shell-initialize))
 
-;; Configure CIDER
-(use-package cider
-  :ensure t
-  :defer t
-  :init (add-hook 'cider-mode-hook #'clj-refactor-mode)
-  :diminish subword-mode
-  :config
-  (setq nrepl-log-messages t
-        cider-repl-display-in-current-window t
-        cider-repl-use-clojure-font-lock t
-        cider-prompt-save-file-on-load 'always-save
-        cider-font-lock-dynamically '(macro core function var)
-        nrepl-hide-special-buffers t
-        cider-overlays-use-font-lock t)
-  (cider-repl-toggle-pretty-printing))
-
-;; Window layout (optional)
+(require 'helper-functions)
+(require 'better-defaults)
+(require 'org-config)
 (require 'nano-layout)
 
 ;; Theming Command line options (this will cancel warning messages)
@@ -107,37 +71,6 @@
 ;; Nano header & mode lines (optional)
 (require 'nano-modeline)
 
-;; Welcome message (optional)
-(let ((inhibit-message t))
-  (message "Welcome to GNU Emacs / N Λ N O edition")
-  (message (format "Initialization time: %s" (emacs-init-time))))
+; (provide 'nano)
 
-;; Splash (optional)
-(add-to-list 'command-switch-alist '("-no-splash" . (lambda (args))))
-(unless (member "-no-splash" command-line-args)
-  (require 'nano-splash))
-
-(provide 'nano)
-
-;; Org customizations
-(require 'org-config)
-
-;; Better defaults
-(require 'better-defaults)
-
-;; Packages
-;; (provide 'my-packages)
-
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(all-the-icons use-package yasnippet web-completion-data smartparens skewer-mode projectile powerline pos-tip pcre2el parent-mode paredit packed multiple-cursors markdown-mode magit-popup magit log4e json-snatcher json-reformat inflections inf-ruby iedit hydra highlight haml-mode gntp gh flyspell-correct flycheck flx f evil eval-sexp-fu dash-docs counsel company cider bind-map bind-key avy autothemer auto-complete anzu)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+(require 'my-packages)

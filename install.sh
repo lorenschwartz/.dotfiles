@@ -32,12 +32,15 @@ brew tap teamookla/speedtest
 brew install speedtest --force
 brew install ispell
 brew install svn
+brew install aspell
+brew install gnutls
 
 # Install MacOS Applications
 brew install --cask visual-studio-code
 brew install --cask gimp
 brew install --cask rawtherapee
 brew install --cask iina
+brew install --cask signal
 
 # Install fonts
 brew tap homebrew/cask-fonts

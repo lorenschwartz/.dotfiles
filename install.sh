@@ -51,18 +51,10 @@ brew install --cask font-fira-code
 # Remove outdated versions from the cellar.
 brew cleanup
 
-# Install Spacemacs
+# Install emacs and my emacs config
 brew tap d12frosted/emacs-plus
 brew install emacs-plus
 git clone https://github.com/lorenschwartz/.emacs.d.git
-
-# Clone my dotfiles config
-echo 'alias dotfiles="/usr/bin/git --git-dir=$HOME/.dotfiles.git/ --work-tree=$HOME"' >> $HOME/.zshrc
-source ~/.zshrc
-echo ".dotfiles.git" >> .gitignore
-git clone --bare https://www.github.com/lorenschwartz/.dotfiles.git $HOME/.dotfiles.git
-dotfiles checkout
-dotfiles config --local status.showUntrackedFiles no
 
 # Clone `use-package
 cd ~/.emacs.d/elpa

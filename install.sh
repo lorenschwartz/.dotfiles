@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-TARGET="$HOME/.dotfiles"
+# TARGET="$HOME/.dotfiles"
 
 # Setup MacOS settings
 ./macos.sh
